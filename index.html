@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- SEO & Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HYPER NOVA | Elite Event Experience</title>
+    <meta name="description"
+        content="Hyper Nova creates ultra-premium, cinematic, luxury event experiences in the UAE. From gala dinners to VIP events, we are the epitome of elite event architecture.">
+    <meta property="og:title" content="HYPER NOVA | Elite Event Experience">
+    <meta property="og:description" content="Cinematic luxury event experiences tailored for a discerning elite.">
+    <meta property="og:type" content="website">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Fancybox CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+
+    <style>
+        :root {
+            --primary-bg: #F8F8F8;
+            --dark-section: #111111;
+            --text-color: #222222;
+            --text-light: #F8F8F8;
+            --gold-gradient: linear-gradient(90deg, #D4AF37, #F5D76E, #C5A100, #D4AF37);
+            --transition: all 0.4s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Utilities */
+        .gold-text {
+            background: var(--gold-gradient);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 3s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            100% {
+                background-position: 200% 50%;
+            }
+        }
+
+        .section {
+            padding: 100px 5%;
+        }
+
+        .dark-section {
+            background-color: var(--dark-section);
+            color: var(--text-light);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background: var(--dark-section);
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 14px;
+            border: 1px solid #D4AF37;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+            z-index: 1;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--gold-gradient);
+            z-index: -1;
+            transition: var(--transition);
+        }
+
+        .btn:hover::before {
+            width: 100%;
+        }
+
+        .btn:hover {
+            color: var(--dark-section);
+            border-color: transparent;
+            font-weight: 600;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 44px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .section-divider {
+            width: 80px;
+            height: 3px;
+            background: var(--gold-gradient);
+            margin: 0 auto 50px;
+            background-size: 200% auto;
+            animation: shimmer 3s linear infinite;
+        }
+
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--dark-section);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        #preloader.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-logo {
+            font-size: 56px;
+            letter-spacing: 12px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Glass Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        nav.scrolled {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 15px 5%;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 30px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .logo-text .hyper {
+            color: #fff;
+            transition: var(--transition);
+        }
+
+        .logo-text .nova {
+            background: var(--gold-gradient);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 3s linear infinite;
+        }
+
+        .logo-tagline {
+            font-size: 11px;
+            letter-spacing: 4px;
+            color: #ccc;
+            text-transform: uppercase;
+            transition: var(--transition);
+            margin-top: -2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold-gradient);
+            background-size: 200% auto;
+            animation: shimmer 3s linear infinite;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero (Parallax & Particles) */
+        #home {
+            height: 100vh;
+            background: url('assets/images/hero.jpg') center/cover no-repeat;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(17, 17, 17, 0.6), rgba(17, 17, 17, 0.8));
+            z-index: 1;
+        }
+
+        #particles-js {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            color: #fff;
+            max-width: 900px;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 75px;
+            margin-bottom: 25px;
+            letter-spacing: 5px;
+            line-height: 1.1;
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            letter-spacing: 2px;
+            margin-bottom: 45px;
+            color: #ddd;
+            font-weight: 300;
+        }
+
+        /* About */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 25px;
+            font-size: 16px;
+            color: #555;
+            font-weight: 300;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 2px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            bottom: 20px;
+            left: 20px;
+            border: 2px solid #D4AF37;
+            z-index: -1;
+            border-radius: 2px;
+        }
+
+        /* Events Section (Parallax) */
+        #events {
+            background: url('assets/images/event1.jpg') center/cover no-repeat;
+            background-attachment: fixed;
+            position: relative;
+            color: #fff;
+        }
+
+        .events-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(17, 17, 17, 0.88);
+        }
+
+        #events .section-divider {
+            background: #fff;
+            animation: none;
+        }
+
+        .events-grid {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .event-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 2px;
+            aspect-ratio: 4/3;
+        }
+
+        .event-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .event-item-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .event-item:hover img {
+            transform: scale(1.15);
+        }
+
+        .event-item:hover .event-item-overlay {
+            opacity: 1;
+        }
+
+        .event-item-overlay h3 {
+            font-size: 28px;
+            letter-spacing: 3px;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .event-item:hover .event-item-overlay h3 {
+            transform: translateY(0);
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .gallery-item {
+            display: block;
+            overflow: hidden;
+            border-radius: 2px;
+            aspect-ratio: 1;
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(17, 17, 17, 0.8);
+            border: 2px solid #D4AF37;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #D4AF37;
+            font-size: 20px;
+            z-index: 3;
+            transition: var(--transition);
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(212, 175, 55, 0.6), transparent);
+            opacity: 0;
+            transition: var(--transition);
+            z-index: 1;
+        }
+
+        .gallery-item::after {
+            content: '⛶';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            font-size: 30px;
+            color: #fff;
+            transition: var(--transition);
+            z-index: 2;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+
+        .gallery-item:not(.video-item):hover::after {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .gallery-item.video-item:hover .play-icon {
+            background: #D4AF37;
+            color: #fff;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        /* Contact (Parallax) */
+        #contact {
+            background: url('assets/images/event3.jpg') center/cover no-repeat;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        .contact-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(248, 248, 248, 0.94);
+        }
+
+        .contact-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-top: 50px;
+            text-align: left;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 25px;
+        }
+
+        .form-group {
+            flex: 1;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 15px 20px;
+            background: #fff;
+            border: 1px solid #ddd;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            color: var(--text-color);
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #D4AF37;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            background: var(--dark-section);
+            border: 1px solid #D4AF37;
+            padding: 18px 45px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            align-self: center;
+            margin-top: 30px;
+            transition: var(--transition);
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .submit-btn span {
+            position: relative;
+            z-index: 2;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--gold-gradient);
+            z-index: 1;
+            transition: var(--transition);
+        }
+
+        .submit-btn:hover::before {
+            width: 100%;
+        }
+
+        .submit-btn:hover span {
+            color: var(--dark-section);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-section);
+            color: #fff;
+            padding: 60px 5% 40px;
+            text-align: center;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .social-icons a {
+            color: #888;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-icons svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        .social-icons a:hover {
+            color: #D4AF37;
+        }
+
+        .copyright {
+            font-size: 14px;
+            color: #555;
+            letter-spacing: 1px;
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 45px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .section-title {
+                font-size: 36px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .form-row {
+                flex-direction: column;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-logo gold-text">HYPER NOVA</div>
+    </div>
+
+    <!-- Navbar -->
+    <nav id="navbar">
+        <a href="#home" class="logo-container">
+            <div class="logo-text">
+                <span class="hyper">HYPER</span>
+                <span class="nova">NOVA</span>
+            </div>
+            <div class="logo-tagline">Elite Event Experience</div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home">
+        <div id="particles-js"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content reveal">
+            <h1 class="gold-text">Cinematic Event Architecture</h1>
+            <p>Elevating luxury to an art form. We engineer breathtaking environments for the most exclusive audiences.
+            </p>
+            <a href="#contact" class="btn">Discover Excellence</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="about-grid">
+            <div class="about-text reveal">
+                <h2 class="section-title" style="text-align: left;">The Elite Standard</h2>
+                <div class="section-divider" style="margin-left: 0;"></div>
+                <p>Establishing an uncompromising paradigm in luxury event management, Hyper Nova curates exclusive,
+                    high-profile experiences tailored for a discerning elite. Execution is inherently cinematic and
+                    flawless.</p>
+                <p>We blend modern UAE-level aesthetics with state-of-the-art sensory technology to transform
+                    magnificent venues into captivating worlds, leaving your guests utterly mesmerized.</p>
+                <a href="#events" class="btn" style="margin-top: 30px;">View Productions</a>
+            </div>
+            <div class="about-image reveal">
+                <img src="assets/images/about.jpg" alt="Luxury Event Setup">
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="section">
+        <div class="events-overlay"></div>
+        <div class="events-grid-container" style="position: relative; z-index: 1;">
+            <h2 class="section-title" style="color: #fff;">Exemplary Productions</h2>
+            <div class="section-divider" style="background: #fff; animation: none;"></div>
+            <div class="events-grid">
+                <div class="event-item reveal">
+                    <img src="assets/images/event2.jpg" alt="Luxury Wedding">
+                    <div class="event-item-overlay">
+                        <h3 class="gold-text">Royal Wedding</h3>
+                    </div>
+                </div>
+                <div class="event-item reveal">
+                    <img src="assets/images/event3.jpg" alt="VIP Party">
+                    <div class="event-item-overlay">
+                        <h3 class="gold-text">VIP Gala Night</h3>
+                    </div>
+                </div>
+                <div class="event-item reveal">
+                    <img src="assets/images/event4.jpg" alt="Corporate Summit">
+                    <div class="event-item-overlay">
+                        <h3 class="gold-text">Global Summit</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section">
+        <h2 class="section-title">Visual Excellence</h2>
+        <div class="section-divider"></div>
+        <div class="gallery-grid">
+            <!-- 6 Generated Images -->
+            <a href="assets/images/event1.jpg" data-fancybox="gallery" class="gallery-item reveal">
+                <img src="assets/images/event1.jpg" alt="Corporate Setup">
+            </a>
+            <a href="assets/images/event2.jpg" data-fancybox="gallery" class="gallery-item reveal">
+                <img src="assets/images/event2.jpg" alt="Luxury Wedding">
+            </a>
+            <a href="assets/images/event3.jpg" data-fancybox="gallery" class="gallery-item reveal">
+                <img src="assets/images/event3.jpg" alt="Private Party">
+            </a>
+            <a href="assets/images/event4.jpg" data-fancybox="gallery" class="gallery-item reveal">
+                <img src="assets/images/event4.jpg" alt="Brand Launch">
+            </a>
+            <a href="assets/images/event5.jpg" data-fancybox="gallery" class="gallery-item reveal">
+                <img src="assets/images/event5.jpg" alt="Ballroom Events">
+            </a>
+            <a href="assets/images/event6.jpg" data-fancybox="gallery" class="gallery-item reveal">
+                <img src="assets/images/event6.jpg" alt="Concert Lights">
+            </a>
+
+            <!-- 1 Video -->
+            <a href="assets/videos/event-video1.mp4" data-fancybox="gallery" class="gallery-item video-item reveal">
+                <img src="assets/images/hero.jpg" alt="Event Video Cover" style="object-position: top;">
+                <div class="play-icon">▶</div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="contact-overlay"></div>
+        <div class="contact-content reveal">
+            <h2 class="section-title">Initiate Contact</h2>
+            <div class="section-divider"></div>
+            <p style="color: #666; font-size: 18px; margin-bottom: 40px; font-weight: 300;">Request a private,
+                confidential consultation for your upcoming masterpiece.</p>
+
+            <form class="contact-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" placeholder="Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Email Address" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" placeholder="Event Category (e.g., Summit, Gala)" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Estimated Date" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Outline your vision and logistical requirements..." required></textarea>
+                </div>
+                <button type="button" class="submit-btn" onclick="alert('Inquiry Submitted Privately.')"><span>Submit
+                        Inquiry</span></button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-icons">
+            <a href="#" aria-label="Instagram">
+                <!-- Inline SVG Instagram -->
+                <svg viewBox="0 0 24 24">
+                    <path
+                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                </svg>
+            </a>
+            <a href="#" aria-label="Facebook">
+                <!-- Inline SVG Facebook -->
+                <svg viewBox="0 0 24 24">
+                    <path
+                        d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
+                </svg>
+            </a>
+            <a href="#" aria-label="LinkedIn">
+                <!-- Inline SVG LinkedIn -->
+                <svg viewBox="0 0 24 24">
+                    <path
+                        d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
+                </svg>
+            </a>
+        </div>
+        <div class="copyright">
+            Hyper Nova &copy; 2026. All Rights Reserved.
+        </div>
+    </footer>
+
+    <!-- Particles JS -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <!-- Fancybox JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script>
+        // 1. Premium Preloader
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => { preloader.classList.add('hide'); }, 1200);
+        });
+
+        // 2. Navbar Background Transition
+        const navbar = document.getElementById('navbar');
+        const handleScroll = () => {
+            if (window.scrollY > 50) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
+        };
+        window.addEventListener('scroll', handleScroll);
+        handleScroll();
+
+        // 3. Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // 4. Scroll Reveal
+        const reveals = document.querySelectorAll('.reveal');
+        const revealOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
+        const revealOnScroll = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target);
+            });
+        }, revealOptions);
+        reveals.forEach(reveal => revealOnScroll.observe(reveal));
+
+        // 5. Fancybox
+        Fancybox.bind('[data-fancybox="gallery"]', {
+            // Clean v5 initialization
+            Images: {
+                initialSize: "fit"
+            }
+        });
+
+        // 6. Gold Particles in Hero
+        particlesJS('particles-js', {
+            "particles": {
+                "number": { "value": 40, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#D4AF37" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.5, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } },
+                "size": { "value": 3, "random": true, "anim": { "enable": true, "speed": 2, "size_min": 0.1, "sync": false } },
+                "line_linked": { "enable": true, "distance": 150, "color": "#D4AF37", "opacity": 0.2, "width": 1 },
+                "move": { "enable": true, "speed": 1, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": { "onhover": { "enable": true, "mode": "bubble" }, "onclick": { "enable": false }, "resize": true },
+                "modes": { "bubble": { "distance": 200, "size": 6, "duration": 2, "opacity": 0.8, "speed": 3 } }
+            },
+            "retina_detect": true
+        });
+    </script>
+</body>
+
+</html>
