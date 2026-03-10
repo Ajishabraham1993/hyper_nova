@@ -196,6 +196,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('home').style.backgroundColor = newBgColor;
             }
 
+            // Change Hero Subtitle dynamically!
+            const heroSubtitle = document.getElementById('hero-dynamic-subtitle');
+            if (heroSubtitle) {
+                const subtitles = [
+                    "We craft memories, celebrate milestones, and make every event shine.",
+                    "From concept to celebration, we bring your vision to life.",
+                    "Events designed with passion, executed with perfection.",
+                    "Creating moments that leave a lasting impression."
+                ];
+
+                // Initialize an index on the container if not exists
+                if (typeof galleryContainer.dataset.textIndex === 'undefined') {
+                    galleryContainer.dataset.textIndex = 0;
+                }
+
+                // Increment and wrap around
+                let currentIndex = parseInt(galleryContainer.dataset.textIndex);
+                currentIndex = (currentIndex + 1) % subtitles.length;
+                galleryContainer.dataset.textIndex = currentIndex;
+
+                // Fade out, change text, fade in
+                heroSubtitle.style.opacity = '0';
+                setTimeout(() => {
+                    heroSubtitle.innerText = subtitles[currentIndex];
+                    heroSubtitle.style.opacity = '1';
+                }, 300); // Matches the CSS transition time
+            }
+
             // The 5th card shifts to pos-4
             currentCards[4].classList.remove('pos-5');
             currentCards[4].classList.add('pos-4');
