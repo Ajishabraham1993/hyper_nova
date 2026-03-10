@@ -1316,24 +1316,30 @@ p {
         /* Softer arch for smaller cards */
     }
 
+    /* Hide outermost cards on mobile — show only 3 */
     .arch-card.pos-1,
     .arch-card.pos-5 {
-        width: 15vw;
-        max-width: 60px;
-        height: 55%;
+        width: 0 !important;
+        opacity: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+        pointer-events: none;
+        overflow: hidden;
     }
 
     .arch-card.pos-2,
     .arch-card.pos-4 {
-        width: 20vw;
-        max-width: 80px;
+        width: 28vw;
+        max-width: 110px;
         height: 75%;
     }
 
     .arch-card.pos-3,
     .arch-card.active-slide {
-        width: 30vw !important;
-        max-width: 130px !important;
+        width: 40vw !important;
+        max-width: 160px !important;
         height: 100% !important;
     }
 
