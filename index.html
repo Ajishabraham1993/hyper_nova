@@ -23,6 +23,17 @@
 
 <body>
 
+    <!-- Page Loader -->
+    <div id="page-loader">
+        <div class="loader-inner">
+            <img src="images/EH_Logo.png" alt="Events Hypernova" class="loader-logo">
+            <div class="loader-dots">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </div>
+
+
     <!-- Dynamic background blobs that will float -->
     <div class="bg-shape bg-shape-1"></div>
     <div class="bg-shape bg-shape-2"></div>
@@ -52,7 +63,7 @@
             <li><a href="#services">Services</a></li>
             <li><a href="#gallery">Gallery</a></li>
         </ul>
-        <a href="#contact" class="btn-primary" data-aos="fade-left" data-aos-duration="1000">Book Event</a>
+        <a href="#contact" class="btn-primary" data-aos="fade-left" data-aos-duration="1000">Enquire Now</a>
     </nav>
 
     <!-- Main Content wrapper for smooth scrolling if needed -->
@@ -206,11 +217,11 @@
                     </p>
                 </div>
                 <div class="split-image" data-aos="zoom-in-left"
-                    style="position: relative; min-height: 450px; width: 100%; display: flex; align-items: center; justify-content: center;">
+                    style="position: relative; min-height: 620px; width: 100%; display: flex; align-items: center; justify-content: center; overflow: visible;">
                     <img src="images/sirius_1.webp" alt="Inclusive Event Space" class="rounded-img floating-slow"
-                        style="width: 75%; position: absolute; top: 0; left: 0; z-index: 1; border: 15px solid var(--clr-bg-pastel-cyan); box-shadow: 0 15px 35px rgba(0,0,0,0.1);">
+                        style="width: 72%; position: absolute; top: 0; left: 0; z-index: 1; border: 15px solid var(--clr-bg-pastel-cyan); box-shadow: 0 15px 35px rgba(0,0,0,0.15); transform: rotate(-6deg); transform-origin: top left;">
                     <img src="images/sirius_2.webp" alt="Accessible Celebration" class="rounded-img floating-slow"
-                        style="width: 65%; position: absolute; bottom: 0; right: 0; z-index: 2; border: 15px solid var(--clr-bg-pastel-cyan); box-shadow: 0 20px 45px rgba(0,0,0,0.15); animation-delay: 2s;">
+                        style="width: 65%; position: absolute; bottom: 10px; right: 0; z-index: 2; border: 15px solid var(--clr-bg-pastel-cyan); box-shadow: 0 20px 45px rgba(0,0,0,0.2); animation-delay: 2s; transform: rotate(6deg); transform-origin: bottom right;">
                 </div>
             </div>
         </section>
@@ -479,7 +490,30 @@
                 <li>🌟 Sensory-friendly environments</li>
                 <li>🌟 Thoughtfully designed experiences</li>
             </ul>
-            <p class="toast-footer-text">Celebrate together. <strong>Experience inclusion.</strong></p>
+            <p class="toast-footer-text" style="margin-bottom: 15px;">Celebrate together. <strong>Experience
+                    inclusion.</strong></p>
+            <a href="https://wa.me/971565616171?text=Hello%20Events%20Hypernova!%20I%20would%20like%20to%20plan%20an%20event."
+                target="_blank" rel="noopener noreferrer" class="btn-primary whatsapp-btn"
+                style="display: inline-flex; align-items: center; gap: 8px; width: 100%; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2); height: 45px; padding: 0;">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 48 48">
+                    <path fill="#fff"
+                        d="M4.9,43.3l2.7-9.8C5.9,30.6,5,27.3,5,24C5,13.5,13.5,5,24,5c5.1,0,9.8,2,13.4,5.6 C41,14.2,43,18.9,43,24c0,10.5-8.5,19-19,19c0,0,0,0,0,0h0c-3.2,0-6.3-0.8-9.1-2.3L4.9,43.3z">
+                    </path>
+                    <path fill="#fff"
+                        d="M4.9,43.8c-0.1,0-0.3-0.1-0.4-0.1c-0.1-0.1-0.2-0.3-0.1-0.5L7,33.5c-1.6-2.9-2.5-6.2-2.5-9.6 C4.5,13.2,13.3,4.5,24,4.5c5.2,0,10.1,2,13.8,5.7c3.7,3.7,5.7,8.6,5.7,13.8c0,10.7-8.7,19.5-19.5,19.5c-3.2,0-6.3-0.8-9.1-2.3 L5,43.8C5,43.8,4.9,43.8,4.9,43.8z">
+                    </path>
+                    <path fill="#cfd8dc"
+                        d="M24,5c5.1,0,9.8,2,13.4,5.6C41,14.2,43,18.9,43,24c0,10.5-8.5,19-19,19h0c-3.2,0-6.3-0.8-9.1-2.3 L4.9,43.3l2.7-9.8C5.9,30.6,5,27.3,5,24C5,13.5,13.5,5,24,5 M24,43L24,43L24,43 M24,43L24,43L24,43 M24,4L24,4C13,4,4,13,4,24 c0,3.4,0.8,6.7,2.5,9.6L3.9,43c-0.1,0.3,0,0.7,0.3,1c0.2,0.2,0.4,0.3,0.7,0.3c0.1,0,0.2,0,0.3,0l9.7-2.5c2.8,1.5,6,2.2,9.2,2.2 c11,0,20-9,20-20c0-5.3-2.1-10.4-5.8-14.1C34.4,6.1,29.4,4,24,4L24,4z">
+                    </path>
+                    <path fill="#40c351"
+                        d="M35.2,12.8c-3-3-6.9-4.6-11.2-4.6C15.3,8.2,8.2,15.3,8.2,24c0,3,0.8,5.9,2.4,8.4L11,33l-1.6,5.8 l6-1.6l0.6,0.3c2.4,1.4,5.2,2.2,8,2.2h0c8.7,0,15.8-7.1,15.8-15.8C39.8,19.8,38.2,15.8,35.2,12.8z">
+                    </path>
+                    <path fill="#fff" fill-rule="evenodd"
+                        d="M19.3,16c-0.4-0.8-0.7-0.8-1.1-0.8c-0.3,0-0.6,0-0.9,0 s-0.8,0.1-1.3,0.6c-0.4,0.5-1.7,1.6-1.7,4s1.7,4.6,1.9,4.9s3.3,5.3,8.1,7.2c4,1.6,4.8,1.3,5.7,1.2c0.9-0.1,2.8-1.1,3.2-2.3 c0.4-1.1,0.4-2.1,0.3-2.3c-0.1-0.2-0.4-0.3-0.9-0.6s-2.8-1.4-3.2-1.5c-0.4-0.2-0.8-0.2-1.1,0.2c-0.3,0.5-1.2,1.5-1.5,1.9 c-0.3,0.3-0.6,0.4-1,0.1c-0.5-0.2-2-0.7-3.8-2.4c-1.4-1.3-2.4-2.8-2.6-3.3c-0.3-0.5,0-0.7,0.2-1c0.2-0.2,0.5-0.6,0.7-0.8 c0.2-0.3,0.3-0.5,0.5-0.8c0.2-0.3,0.1-0.6,0-0.8C20.6,19.3,19.7,17,19.3,16z"
+                        clip-rule="evenodd"></path>
+                </svg>
+                Chat with us
+            </a>
         </div>
     </div>
 

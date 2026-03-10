@@ -1,6 +1,20 @@
 // Events Hypernova - Main Script
 
+// --- Page Loader Dismiss ---
+window.addEventListener('load', () => {
+    const loader = document.getElementById('page-loader');
+    if (loader) {
+        // Minimum visible time so it doesn't flash
+        setTimeout(() => {
+            loader.classList.add('loaded');
+            // Remove from DOM after transition ends
+            setTimeout(() => loader.remove(), 650);
+        }, 600);
+    }
+});
+
 document.addEventListener('DOMContentLoaded', () => {
+
 
     // 0. Initialize Lenis Smooth Scrolling
     const lenis = new Lenis({
