@@ -15,8 +15,8 @@ if __name__ == '__main__':
     replacements = [
         # Accent color (Orange -> Sky Blue)
         (r'--clr-accent-orange', r'--clr-accent-blue'),
-        (r'#f26d40', r'#89b5db'),
-        (r'242,\s*109,\s*64', r'137, 181, 219'),
+        (r'#f26d40', r'#4A90E2'),
+        (r'242,\s*109,\s*64', r'74, 144, 226'),
         
         # Pastel Purple -> Pastel Sky
         (r'--clr-bg-pastel-purple', r'--clr-bg-pastel-sky'),
@@ -30,7 +30,7 @@ if __name__ == '__main__':
         # Other related gradients/colors that might clash
         (r'#ff9a9e', r'#a1c4fd'), # pinkish bento bgs to blueish
         (r'#ffc3a0', r'#c2e9fb'),
-        (r'#ff4757', r'#89b5db'), # red heart emoji color to blue
+        (r'#ff4757', r'#4A90E2'), # red heart emoji color to blue
     ]
     
     replace_in_file('styles.css', replacements)

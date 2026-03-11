@@ -33,8 +33,8 @@ if __name__ == "__main__":
         "icon_excellence.png"
     ]
     
-    # Target color: #89b5db -> RGB (137, 181, 219)
-    target_rgb = (137, 181, 219)
+    # Target color: #4A90E2 -> RGB (74, 144, 226)
+    target_rgb = (74, 144, 226)
     
     image_dir = "images"
     for icon in icons:

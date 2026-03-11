@@ -29,6 +29,23 @@ document.addEventListener('DOMContentLoaded', () => {
         infinite: false,
     });
 
+    // Smooth Anchor Scrolling using Lenis
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return; // Ignore top-of-page links if any
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                e.preventDefault();
+                lenis.scrollTo(targetElement, {
+                    offset: -90, // Account for the fixed navbar height
+                    duration: 1.2
+                });
+            }
+        });
+    });
+
     // 1. Initialize GSAP ScrollTrigger Animations (Replacing AOS)
     gsap.registerPlugin(ScrollTrigger);
 
@@ -336,7 +353,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 7. Inclusive Toast Logic
+    // 7. Initialize Testimonials Slider
+    if (typeof Swiper !== 'undefined') {
+        new Swiper('.testimonials-slider', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 6000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.testimonials-pagination',
+                clickable: true,
+            },
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            }
+        });
+    }
+
+    // 8. Inclusive Toast Logic
     const toastElement = document.getElementById('inclusive-toast');
     const closeToastBtn = document.getElementById('close-toast');
 

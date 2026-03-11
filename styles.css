@@ -3,7 +3,7 @@
     --clr-bg-pastel-blue: #e8f0fe;
     --clr-bg-pastel-sky: #e1eff8;
     --clr-bg-pastel-cyan: #e0f4f9;
-    --clr-accent-blue: #89b5db;
+    --clr-accent-blue: #4A90E2;
     --clr-text-dark: #1e2430;
     --clr-text-light: #526075;
     --clr-white: #ffffff;
@@ -172,12 +172,34 @@ p {
     letter-spacing: 1px;
     font-size: 0.9rem;
     transition: var(--transition-fast);
-    box-shadow: 0 10px 20px rgba(137, 181, 219, 0.3);
+    box-shadow: 0 10px 20px rgba(74, 144, 226, 0.3);
 }
 
 .btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 15px 25px rgba(137, 181, 219, 0.4);
+    box-shadow: 0 15px 25px rgba(74, 144, 226, 0.4);
+}
+
+.qr-code {
+    width: 120px;
+    height: 120px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border: 4px solid #fff;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    display: block;
+    margin-left: 0; /* Align to left by default since parent is text-left */
+}
+
+.btn-small-text {
+    font-size: 0.75rem !important;
+    padding: 10px 20px !important;
+}
+
+.toast-content .qr-code {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 15px auto;
 }
 
 /* --- NAVIGATION --- */
@@ -731,7 +753,7 @@ p {
 #services .staggered-list {
     position: relative;
     padding-left: 30px;
-    border-left: 2px dashed rgba(137, 181, 219, 0.3);
+    border-left: 2px dashed rgba(74, 144, 226, 0.3);
     margin-left: 20px;
 }
 
@@ -768,7 +790,7 @@ p {
     border-radius: 50%;
     background: var(--clr-bg-pastel-blue);
     /* Match background so it looks hollow */
-    border: 3px solid rgba(137, 181, 219, 0.5);
+    border: 3px solid rgba(74, 144, 226, 0.5);
     transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
@@ -780,7 +802,7 @@ p {
 #services .staggered-list li:hover::before {
     background: var(--clr-accent-blue);
     border-color: var(--clr-accent-blue);
-    box-shadow: 0 0 15px rgba(137, 181, 219, 0.6);
+    box-shadow: 0 0 15px rgba(74, 144, 226, 0.6);
     transform: translateY(-50%) scale(1.3);
 }
 
@@ -1113,6 +1135,12 @@ p {
     text-decoration: none;
 }
 
+/* Fix for mobile auto-color on phone numbers */
+a[href^="tel"] {
+    color: inherit !important;
+    text-decoration: none !important;
+}
+
 .whatsapp-btn:hover {
     background: #1ebe57;
     transform: translateY(-3px) scale(1.02);
@@ -1385,6 +1413,49 @@ p {
     .mission-card p {
         font-size: 1.1rem;
     }
+}
+
+/* --- TESTIMONIALS SECTION --- */
+#testimonials .split-image::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(137, 181, 219, 0.4) 0%, rgba(255, 255, 255, 0) 70%);
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    border-radius: 50%;
+}
+
+.testimonial-card {
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(137, 181, 219, 0.2);
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.1);
+}
+
+.testimonials-pagination .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background: var(--clr-accent-blue);
+    opacity: 0.4;
+    transition: all 0.3s ease;
+}
+
+.testimonials-pagination .swiper-pagination-bullet-active {
+    opacity: 1;
+    width: 25px;
+    border-radius: 5px;
 }
 
 /* --- INCLUSIVE TOAST POPUP --- */
