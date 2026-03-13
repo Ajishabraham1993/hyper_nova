@@ -1415,6 +1415,42 @@ a[href^="tel"] {
     }
 }
 
+/* --- INCLUSIVE EVENT IMAGES --- */
+.inclusive-image-container {
+    position: relative;
+    min-height: 620px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+}
+
+.inclusive-img-1 {
+    width: 72%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    border: 15px solid var(--clr-bg-pastel-cyan);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    transform: rotate(-6deg);
+    transform-origin: top left;
+}
+
+.inclusive-img-2 {
+    width: 65%;
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+    z-index: 2;
+    border: 15px solid var(--clr-bg-pastel-cyan);
+    box-shadow: 0 20px 45px rgba(0,0,0,0.2);
+    animation-delay: 2s;
+    transform: rotate(6deg);
+    transform-origin: bottom right;
+}
+
 /* --- TESTIMONIALS SECTION --- */
 #testimonials .split-image::after {
     content: '';
@@ -1538,16 +1574,77 @@ a[href^="tel"] {
 }
 
 @media screen and (max-width: 576px) {
+    /* --- Popup: smaller on mobile --- */
     .inclusive-toast {
-        width: 90%;
-        bottom: 20px;
+        width: 88%;
+        bottom: 15px;
         right: -100%;
-        left: 5%;
+        left: 6%;
+        padding: 14px; /* reduced from 25px */
     }
 
     .inclusive-toast.show {
         right: auto;
-        left: 5%;
+        left: 6%;
+    }
+
+    .close-toast-btn {
+        top: 10px;
+        right: 10px;
+        font-size: 1.2rem;
+    }
+
+    .toast-title {
+        font-size: 1.05rem;
+        margin-bottom: 8px;
+    }
+
+    .toast-intro {
+        font-size: 0.8rem;
+        margin-bottom: 8px;
+        line-height: 1.4;
+    }
+
+    .toast-features {
+        margin: 0 0 8px 0;
+    }
+
+    .toast-features li {
+        font-size: 0.78rem;
+        margin-bottom: 4px;
+    }
+
+    .toast-footer-text {
+        font-size: 0.8rem;
+        padding: 7px;
+        margin-top: 5px;
+    }
+
+    .whatsapp-btn {
+        padding: 8px 14px !important;
+        font-size: 0.9rem !important;
+        height: 38px !important;
+    }
+
+    /* --- Inclusive images: both visible, better spacing --- */
+    .inclusive-image-container {
+        min-height: 620px; /* Increased from 480px to allow more vertical space */
+    }
+
+    .inclusive-img-1 {
+        width: 78%;
+        border-width: 7px;
+        transform: rotate(-4deg);
+        top: 0;
+        left: 0;
+    }
+
+    .inclusive-img-2 {
+        width: 72%;
+        border-width: 7px;
+        top: 220px; /* Pushed down significantly to reduce overlap */
+        right: 0;
+        transform: rotate(4deg);
     }
 }
 
