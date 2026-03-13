@@ -1237,6 +1237,23 @@ a[href^="tel"] {
     .why-choose-grid {
         grid-template-columns: 1fr;
     }
+
+    .section-padding {
+        padding: 40px 5% 30px 5%;
+    }
+
+    .bg-purple,
+    .bg-pink {
+        padding-bottom: 35px;
+    }
+
+    .section-header {
+        margin-bottom: 25px;
+    }
+
+    .mt-50 {
+        margin-top: 25px;
+    }
 }
 
 .mt-20 {
