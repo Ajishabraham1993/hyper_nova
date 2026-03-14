@@ -1254,6 +1254,24 @@ a[href^="tel"] {
     .mt-50 {
         margin-top: 25px;
     }
+
+    #testimonials {
+        padding-bottom: 10px !important;
+    }
+
+    #testimonials .swiper {
+        padding-top: 10px;
+        padding-bottom: 30px;
+    }
+
+    #inclusive {
+        padding-bottom: 20px !important;
+    }
+
+    #services {
+        padding-top: 20px !important;
+        padding-bottom: 20px !important;
+    }
 }
 
 .mt-20 {
