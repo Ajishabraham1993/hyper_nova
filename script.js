@@ -353,26 +353,98 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 7. Initialize Testimonials Slider
-    if (typeof Swiper !== 'undefined') {
-        new Swiper('.testimonials-slider', {
-            slidesPerView: 1,
-            spaceBetween: 30,
-            loop: true,
-            autoplay: {
-                delay: 6000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: '.testimonials-pagination',
-                clickable: true,
-            },
-            effect: 'fade',
-            fadeEffect: {
-                crossFade: true
+    // 7. Initialize Testimonials Slider or Scatter Desktop Layout
+    const tSlider = document.querySelector('.testimonials-slider');
+    const tSlides = document.querySelectorAll('.testimonials-slider .swiper-slide');
+    let swiperInstance = null;
+    let scatterInterval = null;
+
+    function initTestimonials() {
+        if (!tSlider) return;
+
+        if (window.innerWidth >= 1024) {
+            // Desktop: Scattered Hovering Layout
+            if (swiperInstance) {
+                swiperInstance.destroy(true, true);
+                swiperInstance = null;
             }
-        });
+            
+            tSlider.classList.add('scatter-mode');
+            
+            // 10 precise scattered positions safely bounded, explicitly assigning scale and depth of field (blur)
+            const slots = [
+                { top: '50%', left: '50%', scale: 0.60, z: 9, blur: 0 }, // Center Focus
+                { top: '25%', left: '25%', scale: 0.45, z: 2, blur: 2 }, // Top Left 
+                { top: '75%', left: '22%', scale: 0.40, z: 1, blur: 3 }, // Bottom Left 
+                { top: '50%', left: '80%', scale: 0.55, z: 8, blur: 0 }, // Mid Right Focus
+                { top: '28%', left: '52%', scale: 0.45, z: 3, blur: 2 }, // Top Mid  
+                { top: '65%', left: '35%', scale: 0.50, z: 5, blur: 1 }, // Mid-Bottom Left Inner
+                { top: '25%', left: '75%', scale: 0.40, z: 1, blur: 3 }, // Top Right
+                { top: '48%', left: '18%', scale: 0.55, z: 8, blur: 0 }, // Mid Left Focus
+                { top: '75%', left: '75%', scale: 0.45, z: 4, blur: 2 }, // Bottom Right
+                { top: '80%', left: '50%', scale: 0.40, z: 2, blur: 3 }, // Bottom Mid
+            ];
+            
+            // Just draw them scattered and hovering securely
+            tSlides.forEach((slide, index) => {
+                const slot = slots[index % slots.length];
+                
+                slide.style.position = 'absolute';
+                slide.style.top = slot.top;
+                slide.style.left = slot.left;
+                
+                // Calculate hover translation to avoid getting cut off from horizontal container edges
+                const leftPos = parseInt(slot.left);
+                const hoverX = leftPos < 35 ? '-20%' : (leftPos > 65 ? '-80%' : '-50%');
+                slide.style.setProperty('--hover-x', hoverX);
+                slide.style.setProperty('--hover-y', '-50%'); // Lock vertical to avoid flickering
+                
+                // Read explicit scale and depth map from slots instead of randomizing
+                slide.style.transform = `translate(-50%, -50%) scale(${slot.scale})`;
+                slide.style.zIndex = slot.z;
+                slide.style.opacity = slot.blur === 0 ? 1 : 0.85; // Focus cards are fully opaque
+                slide.style.filter = `blur(${slot.blur}px)`;
+                
+                slide.style.pointerEvents = 'auto'; // allow hover
+            });
+            
+        } else {
+            // Mobile/Tablet: Standard Swiper Layout
+            if (tSlider.classList.contains('scatter-mode')) {
+                tSlider.classList.remove('scatter-mode');
+                tSlider.onmouseenter = null;
+                tSlider.onmouseleave = null;
+                clearInterval(scatterInterval);
+                
+                // Clear inline scatter styles
+                tSlides.forEach(slide => {
+                    slide.style = '';
+                    slide.classList.remove('active-center');
+                });
+            }
+            
+            if (!swiperInstance && typeof Swiper !== 'undefined') {
+                swiperInstance = new Swiper('.testimonials-slider', {
+                    slidesPerView: 1,
+                    spaceBetween: 50,
+                    loop: true,
+                    autoplay: { delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true },
+                    pagination: { el: '.testimonials-pagination', clickable: true },
+                    grabCursor: true,
+                    breakpoints: {
+                        768: { slidesPerView: 2, spaceBetween: 50 }
+                    }
+                });
+            }
+        }
     }
+
+    initTestimonials();
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(initTestimonials, 250);
+    });
 
     // 8. Inclusive Toast Logic
     const toastElement = document.getElementById('inclusive-toast');

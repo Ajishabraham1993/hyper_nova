@@ -1511,9 +1511,62 @@ a[href^="tel"] {
 }
 
 .testimonial-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.1);
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
 }
+
+/* --- SCATTER MODE overrides --- */
+.scatter-mode {
+    position: relative;
+    overflow: hidden !important;
+    height: 700px;
+    margin-top: 20px;
+    /* allow pointer events strictly to child cards */
+}
+
+.scatter-mode .swiper-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Ensure smooth transitions for all cards */
+.scatter-mode .swiper-slide {
+    width: 450px !important;
+    height: auto !important;
+    transform-origin: center;
+    transition: filter 0.5s ease, opacity 0.5s ease, transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform, filter, opacity;
+    /* Disable default swiper shadow if any */
+}
+
+/* DOF Effect: When any card is hovered, push the others back and blur them */
+.scatter-mode:has(.swiper-slide:hover) .swiper-slide:not(:hover) {
+    filter: blur(8px) !important;
+    opacity: 0.4 !important;
+}
+
+/* The hovered card jumps to the front and focuses */
+.scatter-mode .swiper-slide:hover {
+    filter: blur(0px) !important;
+    opacity: 1 !important;
+    z-index: 100 !important;
+    transform: translate(var(--hover-x, -50%), var(--hover-y, -50%)) scale(0.9) !important; /* Bring it closer to camera, moving towards center */
+}
+
+/* Any card hovered gets full size and shadow */
+.scatter-mode .swiper-slide .testimonial-card:hover {
+    transform: translateY(-12px) scale(1.03); /* slightly bigger pop on hover */
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.3);
+    border-color: var(--clr-accent-blue);
+}
+
+/* Hide pagination during scatter mode */
+.scatter-mode ~ .testimonials-pagination {
+    display: none !important;
+}
+
 
 .testimonials-pagination .swiper-pagination-bullet {
     width: 10px;
